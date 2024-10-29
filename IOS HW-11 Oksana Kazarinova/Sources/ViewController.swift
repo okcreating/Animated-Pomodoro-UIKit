@@ -34,7 +34,6 @@ final class ViewController: UIViewController, CAAnimationDelegate {
         label.font = .systemFont(ofSize: 35)
         label.textColor = .red
         label.textAlignment = .center
-        //  label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
@@ -44,14 +43,12 @@ final class ViewController: UIViewController, CAAnimationDelegate {
         label.font = .systemFont(ofSize: 60)
         label.textColor = .systemRed
         label.textAlignment = .center
-        // label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     private lazy var stopStartButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(loadSFImage(name: "play.circle.fill"), for: .normal)
-        // button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .red
         button.tintColor = .systemBackground
         button.addTarget(self, action: #selector(buttonTappped), for: .touchUpInside)
@@ -63,7 +60,6 @@ final class ViewController: UIViewController, CAAnimationDelegate {
     override func viewDidLoad() {
         view.backgroundColor = .lightGray
         super.viewDidLoad()
-        setupView()
         setupHierarchy()
         setupLayout()
         createCircularPath()
@@ -112,8 +108,6 @@ final class ViewController: UIViewController, CAAnimationDelegate {
 
     // MARK: - Setups
 
-    private func setupView() {}
-
     private func setupHierarchy() {
         view.addSubview(statusLabel)
         view.addSubview(timeLabel)
@@ -136,7 +130,7 @@ final class ViewController: UIViewController, CAAnimationDelegate {
         }
     }
 
-    // MARK: - Progress Bar
+    // MARK: - Progress Bar Animation
 
     private func createCircularPath() {
         circleLayer.path = UIBezierPath(arcCenter: CGPoint(x: view.frame.midX, y: view.frame.midY), radius: 110, startAngle: startPoint, endAngle: endPoint, clockwise: true).cgPath
